@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Standway - Smart Parking</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  /* RESET */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Arial, sans-serif; background: #f9f9f9; color: #333; }
+
+/* Navbar */
+/* Hamburger Menu Button */
+.menu-btn {
+  display: none; /* hidden by default */
+  font-size: 2rem;
+  cursor: pointer;
+  color: white;
+}
+
+/* Mobile navbar hidden initially */
+#navbar ul {
+  display: flex;
+  gap: 25px;
+}
+
+@media (max-width: 768px) {
+  #navbar {
+    display: none; /* hidden initially on mobile */
+    width: 100%;
+    background: #111;
+    position: absolute;
+    top: 65px; /* below navbar */
+    left: 0;
+  }
+  #navbar ul {
+    flex-direction: column;
+    gap: 0;
+  }
+  #navbar ul li {
+    border-bottom: 1px solid #333;
+  }
+  #navbar ul li a {
+    padding: 12px 20px;
+    display: block;
+  }
+
+  .menu-btn {
+    display: block; /* show hamburger */
+  }
+
+  header {
+    position: relative;
+    flex-wrap: wrap;
+  }
+}
+
+/* Show menu when active */
+#navbar.active {
+  display: block;
+}
+
+header {
+  background: #111; color: white;
+  padding: 15px 40px;
+  display: flex; justify-content: space-between; align-items: center;
+  position: sticky; top: 0; z-index: 1000;
+}
+header .logo { font-size: 1.8rem; font-weight: bold; color: #fdbb2d; }
+nav ul { list-style: none; display: flex; gap: 25px; flex-wrap: wrap; }
+nav ul li a { color: white; text-decoration: none; transition: color 0.3s; }
+nav ul li a:hover { color: #fdbb2d; }
+
+/* Hero Section */
+
+.hero {
+  position: relative;
+  height: 60vh; /* Reduce height from 80vh to 60vh */
+  background: url("https://images.unsplash.com/photo-1525609004556-c46c7d6cf023") center/cover no-repeat;
+  display: flex;
+  align-items: flex-end; /* Align content to bottom */
+  justify-content: center;
+  padding: 20px;
+}
+
+.hero .content {
+  background: rgba(0, 0, 0, 0.209); /* Slightly lighter overlay */
+  padding: 20px 30px;
+  border-radius: 12px;
+  color: white;
+  text-align: center;
+  width: 100vw;
+  max-width: 100%;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Form Inline at bottom of hero */
+.form-inline {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+  margin-top: 15px;
+}
+
+.form-inline input,
+.form-inline select {
+  padding: 10px 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  min-width: 150px;
+  flex: none;
+}
+
+.form-inline button {
+  background: #fdbb2d;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.form-inline button:hover {
+  background: #b21f1f;
+  color: white;
+}
+
+/* Responsive */
+@media(max-width:768px) {
+  .hero { height: auto; padding: 40px 20px; align-items: center; }
+  .form-inline { overflow-x: auto; gap: 8px; flex-wrap: wrap; }
+  .form-inline input, .form-inline select, .form-inline button { min-width: 120px; flex: none; }
+}
+
+/* Features */
+.features { display: flex; justify-content: center; gap: 25px; padding: 60px 20px; flex-wrap: wrap; }
+.features a {
+  flex: 1; min-width: 280px; background: white; padding: 40px; border-radius: 20px;
+  text-align: center; text-decoration: none; color: #333; font-size: 1.2rem; font-weight: bold;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1); transition: all 0.4s ease;
+}
+.features a:hover { background: linear-gradient(135deg,#fdbb2d,#ff512f); color: white; transform: translateY(-12px); }
+
+/* Why Choose */
+.why { padding: 60px 20px; background: #fff5e6; text-align: center; }
+.why h2 { font-size: 2.2rem; margin-bottom: 20px; }
+.why-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap: 25px; margin-top: 30px; }
+.why-box { background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s; cursor: pointer; }
+.why-box:hover { transform: translateY(-8px) scale(1.03); }
+
+/* Testimonials */
+#testimonials { background: linear-gradient(135deg,#1a2a6c,#b21f1f,#fdbb2d); color: white; padding: 60px 20px; text-align: center; overflow: hidden; }
+#testimonials h2 { font-size: 2.5rem; margin-bottom: 40px; }
+.slider { overflow: hidden; width: 100%; }
+.slider-track { display: flex; animation: scroll 35s linear infinite; gap: 20px; }
+.card { min-width: 280px; background: rgba(255,255,255,0.15); border-radius: 15px; padding: 20px; backdrop-filter: blur(8px); text-align: center; }
+.card img { width: 80px; height: 80px; border-radius: 50%; border: 3px solid white; margin-bottom: 15px; }
+.card h3 { color: #ffeb3b; margin-bottom: 10px; }
+.card p { color: #f1f1f1; }
+@keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* Pricing */
+.pricing { padding: 60px 20px; text-align: center; background: #f2f2f2; }
+.pricing h2 { font-size: 2rem; margin-bottom: 30px; }
+.pricing-cards { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+.price-card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); min-width: 220px; flex: 1; transition: 0.3s; }
+.price-card:hover { transform: translateY(-8px); }
+.price-card button { background: #fdbb2d; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+
+/* Pre Booking */
+.prebook { padding: 60px 20px; text-align: center; background: #fff5e6; }
+.prebook h2 { margin-bottom: 20px; }
+.prebook button { background: #b21f1f; color: white; padding: 12px 25px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
+
+/* Footer */
+footer { background: #111; color: white; padding: 40px 20px; display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; }
+footer h4 { margin-bottom: 15px; color: #fdbb2d; }
+
+/* Animations */
+@keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+
+/* Responsive */
+@media(max-width:768px){
+  .hero { height: auto; padding: 40px 20px; }
+  .hero h1 { font-size: 2rem; }
+  .features { flex-direction: column; }
+  .why-grid { grid-template-columns: 1fr; }
+  .slider-track { animation-duration: 50s; }
+  .form-inline { overflow-x: auto; gap: 8px; padding-bottom: 5px; }
+  .form-inline input, .form-inline select, .form-inline button { min-width: 140px; flex: 0 0 auto; }
+  .hero .content { max-width: 100%; padding: 20px; }
+}
+</style>
+</head>
+<body>
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Standway - Smart Parking</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <div class="logo">Standway</div>
+    
+    <!-- Hamburger menu button -->
+    <div class="menu-btn" id="menu-btn">&#9776;</div>
+
+    <nav id="navbar">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#parking">Parking</a></li>
+        <li><a href="#location">Location</a></li>
+        <li><a href="#">Login</a></li>
+        <li><a href="#">Signup</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+ <!-- Hero Section -->
+<section class="hero">
+  <div class="content">
+    <h1>Welcome to Standway</h1>
+    <p>Smart Parking Solution for Everyone</p>
+
+    <!-- Request Call Form -->
+    <form class="form-inline">
+      <input type="text" name="username" placeholder="Your Name" required>
+      <input type="tel" name = "Phone"placeholder="Phone Number" required>
+      <select required>
+        <option>Select Parking Area</option>
+        <option>Mall Road</option>
+        <option>Airport</option>
+        <option>Railway Station</option>
+        <option>Downtown</option>
+      </select>
+      <button type="submit">Request Call</button>
+    </form>
+  </div>
+</section>
+
+
+  <!-- Features Section -->
+  <section id="features" class="features">
+    <a href="#"><h3>Save Time</h3><p>Quick booking, zero waiting.</p></a>
+    <a href="#"><h3>Save Money</h3><p>Best affordable plans for you.</p></a>
+    <a href="#"><h3>Save Stress</h3><p>Secure, hassle-free parking.</p></a>
+  </section>
+
+  <!-- Why Choose Section -->
+  <section id="about" class="why">
+    <h2>Why Choose Standway?</h2>
+    <div class="why-grid">
+      <div class="why-box"><h3>Charge Vehicle</h3><p>EV charging support.</p></div>
+      <div class="why-box"><h3>Close & Budget Friendly</h3><p>Near your destination, affordable.</p></div>
+      <div class="why-box"><h3>Concierge Option</h3><p>Premium valet services.</p></div>
+      <div class="why-box"><h3>Safe & Secure</h3><p>24/7 surveillance & support.</p></div>
+      <div class="why-box"><h3>Easy Access</h3><p>Multiple locations around the city.</p></div>
+      <div class="why-box"><h3>Smart Booking</h3><p>Pre-book easily with our app.</p></div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials">
+    <h2>✨ What Our Customers Say ✨</h2>
+    <div class="slider">
+      <div class="slider-track">
+        <div class="card"><img src="https://randomuser.me/api/portraits/women/1.jpg"><h3>Neha Sharma</h3><p>"Standway made parking so easy."</p></div>
+        <div class="card"><img src="https://randomuser.me/api/portraits/men/2.jpg"><h3>Amit Verma</h3><p>"Affordable and reliable service."</p></div>
+        <div class="card"><img src="https://randomuser.me/api/portraits/women/3.jpg"><h3>Pooja Singh</h3><p>"Pre-booking saved me money!"</p></div>
+        <div class="card"><img src="https://randomuser.me/api/portraits/men/4.jpg"><h3>Rahul Mehta</h3><p>"Very safe and secure."</p></div>
+        <div class="card"><img src="https://randomuser.me/api/portraits/women/5.jpg"><h3>Simran Kaur</h3><p>"Professional service."</p></div>
+
+        <!-- Duplicate for infinite loop -->
+        <div class="card"><img src="https://randomuser.me/api/portraits/women/1.jpg"><h3>Neha Sharma</h3><p>"Standway made parking so easy."</p></div>
+        <div class="card"><img src="https://randomuser.me/api/portraits/men/2.jpg"><h3>Amit Verma</h3><p>"Affordable and reliable service."</p></div>
+        <div class="card"><img src="https://randomuser.me/api/portraits/women/3.jpg"><h3>Pooja Singh</h3><p>"Pre-booking saved me money!"</p></div>
+        <div class="card"><img src="https://randomuser.me/api/portraits/men/4.jpg"><h3>Rahul Mehta</h3><p>"Very safe and secure."</p></div>
+        <div class="card"><img src="https://randomuser.me/api/portraits/women/5.jpg"><h3>Simran Kaur</h3><p>"Professional service."</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="pricing" id="parking">
+    <h2>Our Pricing Plans</h2>
+    <div class="pricing-cards">
+      <div class="price-card"><h3>Basic</h3><p>₹50/hour</p><button>Learn More</button></div>
+      <div class="price-card"><h3>Standard</h3><p>₹200/day</p><button>Learn More</button></div>
+      <div class="price-card"><h3>Premium</h3><p>₹500/week</p><button>Learn More</button></div>
+      <div class="price-card"><h3>Economy</h3><p>₹150/day</p><button>Learn More</button></div>
+    </div>
+  </section>
+
+  <!-- Pre Booking -->
+  <section class="prebook">
+    <h2>Save Money By Pre-Booking 🚗</h2>
+    <button>Pick Your Parking Dates</button>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div>
+      <h4>Standway</h4>
+      <p>Smart Parking Solution for Everyone.</p>
+    </div>
+    <div>
+      <h4>Contact Info</h4>
+      <p>Email: support@standway.com</p>
+      <p>Phone: +91 9876543210</p>
+    </div>
+    <div>
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#parking">Pricing</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Script -->
+  <script src="/js/script.js"></script>
+</body>
+</html>
