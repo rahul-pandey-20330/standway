@@ -228,8 +228,6 @@ footer h4 { margin-bottom: 15px; color: #fdbb2d; }
       </ul>
     </nav>
   </header>
-
-  <!-- Hero Section -->
  <!-- Hero Section -->
 <section class="hero">
   <div class="content">
@@ -237,11 +235,12 @@ footer h4 { margin-bottom: 15px; color: #fdbb2d; }
     <p>Smart Parking Solution for Everyone</p>
 
     <!-- Request Call Form -->
-    <form class="form-inline">
-      <input type="text" name="username" placeholder="Your Name" required>
-      <input type="tel" name = "Phone"placeholder="Phone Number" required>
-      <select required>
-        <option>Select Parking Area</option>
+    <form id="requestForm" action="/request-call" method="POST" class="form-inline">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email id" required>
+      <input type="tel" name = "phone"placeholder="Phone Number" required>
+      <select name="parking" required>
+        <option> Select Parking Area</option>
         <option>Mall Road</option>
         <option>Airport</option>
         <option>Railway Station</option>
@@ -250,6 +249,19 @@ footer h4 { margin-bottom: 15px; color: #fdbb2d; }
       <button type="submit">Request Call</button>
     </form>
   </div>
+  <!-- Success Modal -->
+<div id="successModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+  background:rgba(0,0,0,0.6);  align-items:center; justify-content:center; z-index:2000;">
+  
+  <div style="background:#fff; padding:30px; border-radius:12px; text-align:center; width:90%; max-width:400px; box-shadow:0 5px 20px rgba(0,0,0,0.2);">
+    <h2 style="color:green; margin-bottom:15px;">✅ Success</h2>
+    <p id="modalMessage">Your request was submitted successfully!</p>
+    <button onclick="closeModal()" style="margin-top:20px; background:#fdbb2d; border:none; padding:10px 20px; border-radius:6px; cursor:pointer; font-weight:bold;">
+      OK
+    </button>
+  </div>
+</div>
+
 </section>
 
 
@@ -334,6 +346,43 @@ footer h4 { margin-bottom: 15px; color: #fdbb2d; }
   </footer>
 
   <!-- Script -->
+ <script>
+  const form = document.getElementById("requestForm");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault(); // page reload stop
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch("/request-call", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        document.getElementById("modalMessage").innerText = result.message;
+        document.getElementById("successModal").style.display = "flex"; // ✅ Show popup
+        form.reset();
+      } else {
+        document.getElementById("modalMessage").innerText = "Failed to submit request!";
+        document.getElementById("successModal").style.display = "flex"; // ✅ Show popup
+      }
+    } catch (err) {
+      document.getElementById("modalMessage").innerText = "Something went wrong!";
+      document.getElementById("successModal").style.display = "flex"; // ✅ Show popup
+    }
+  });
+
+  function closeModal() {
+    document.getElementById("successModal").style.display = "none"; // ✅ Hide popup
+  }
+</script>
+
   <script src="/js/script.js"></script>
 </body>
 </html>
