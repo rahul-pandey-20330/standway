@@ -75,20 +75,98 @@ nav ul li a:hover { color: #3147a8; }
 
 .hero {
   position: relative;
-  height: 60vh; /* Reduce height from 80vh to 60vh */
-  background: url("/images/Illustration Hiking Website Email Header (2).png") center/cover no-repeat;
+  width: 100%;
+  height: 70vh; /* Hero section height */
+  background-image: url("/images/Untitled design.png");
+  background-size: cover;       /* Image covers entire div */
+  background-position: center;  /* Image centered */
+  background-repeat: no-repeat; /* No repetition */
   display: flex;
-  align-items: flex-end; /* Align content to bottom */
-  justify-content: center;
-  padding: 20px;
+  align-items: center;          /* Content vertically center */
+  justify-content: center;      /* Content horizontally center */
+  padding: 0 20px;
+ 
+  height: 100vh;
   
-  background-size: cover;
-  object-fit: cover;
-  overflow: hidden;
+}
+
+/* Optional overlay for better text visibility */
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3); /* dark overlay */
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: auto;        
+    min-height: 100vh;   
+    padding: 40px 20px;  
+    align-items: flex-start; 
+    
+  }
 }
 
 .hero .content {
-  background: rgba(0, 0, 0, 0.209); /* Slightly lighter overlay */
+  position: relative;
+  z-index: 2; /* Text above overlay */
+  color: white;
+  text-align: center;
+  max-width: 90%;
+}
+
+.hero .content h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.hero .content p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/* Form inside hero */
+.hero .form-inline {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.hero .form-inline input,
+.hero .form-inline select,
+.hero .form-inline button {
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+}
+
+/* Responsive adjustments */
+@media(max-width:768px) {
+  .hero {
+    height: auto; /* Adjust height for smaller screens */
+    padding: 40px 20px;
+    align-items: center;
+  }
+  .hero .content h1 {
+    font-size: 2rem;
+  }
+  .hero .form-inline input,
+  .hero .form-inline select,
+  .hero .form-inline button {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+
+.hero .content {
+  background: rgba(0, 0, 0, 0.08); /* Slightly lighter overlay */
   padding: 20px 30px;
   border-radius: 12px;
   color: white;
@@ -96,6 +174,7 @@ nav ul li a:hover { color: #3147a8; }
   width: 100vw;
   max-width: 100%;
   animation: fadeIn 1.5s ease-in-out;
+  top: 11rem;
 }
 
 /* Form Inline at bottom of hero */
@@ -233,7 +312,11 @@ footer {
 
   <!-- Navbar -->
   <header>
-    <div class="logo">Standway</div>
+   <div class="logo" style="display: flex; align-items: center; gap: 20px;">
+  <img src="/images/Profile picture (3).png" alt="logo" style="height: 50px; width: 40px; object-fit: contain;">
+  <span style="font-size: 24px; font-weight: bold; color: #333;"><p style="color: #0f2b9e;">Standway</p></span>
+</div>
+
     <div class="menu-btn" id="menu-btn">&#9776;</div>
 
     <nav id="navbar">
