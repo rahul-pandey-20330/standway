@@ -195,6 +195,24 @@ footer h4 { margin-bottom: 15px; color: #fdbb2d; }
   .form-inline input, .form-inline select, .form-inline button { min-width: 140px; flex: 0 0 auto; }
   .hero .content { max-width: 100%; padding: 20px; }
 }
+footer {
+      background: #111;
+      color: white;
+      padding: 40px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: space-between;
+    }
+    footer h4 { margin-bottom: 15px; color: #fdbb2d; }
+    footer ul { list-style: none; padding: 0; }
+    footer ul li a { color: white; text-decoration: none; transition: 0.3s; }
+    footer ul li a:hover { color: #fdbb2d; }
+
+    @media(max-width:768px) {
+      .hero h1 { font-size: 2rem; }
+      .team-grid { grid-template-columns: 1fr; }
+    }
 </style>
 </head>
 <body>
@@ -212,15 +230,13 @@ footer h4 { margin-bottom: 15px; color: #fdbb2d; }
   <!-- Navbar -->
   <header>
     <div class="logo">Standway</div>
-    
-    <!-- Hamburger menu button -->
     <div class="menu-btn" id="menu-btn">&#9776;</div>
 
     <nav id="navbar">
       <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="#features">Features</a></li>
-        <li><a href="#about">About Us</a></li>
+        <li><a href="./about">About Us</a></li>
         <li><a href="#parking">Parking</a></li>
         <li><a href="#location">Location</a></li>
         <li><a href="#">Login</a></li>
@@ -276,12 +292,15 @@ footer h4 { margin-bottom: 15px; color: #fdbb2d; }
   <section id="about" class="why">
     <h2>Why Choose Standway?</h2>
     <div class="why-grid">
-      <div class="why-box"><h3>Charge Vehicle</h3><p>EV charging support.</p></div>
-      <div class="why-box"><h3>Close & Budget Friendly</h3><p>Near your destination, affordable.</p></div>
-      <div class="why-box"><h3>Concierge Option</h3><p>Premium valet services.</p></div>
-      <div class="why-box"><h3>Safe & Secure</h3><p>24/7 surveillance & support.</p></div>
-      <div class="why-box"><h3>Easy Access</h3><p>Multiple locations around the city.</p></div>
+      <div class="why-box"><h3>Time saving</h3><p>& no parking stress.</p></div>
+      <div class="why-box"><h3>Secure, verified</h3><p>parking spots with good amenities.</p></div>
+      <div class="why-box"><h3>Income</h3><p>Extra income for property owners.</p></div>
+      <div class="why-box"><h3>Environmentally friendly</h3><p>Environmentally friendly (paperless).
+</p></div>
+      <div class="why-box"><h3>Charge Vehical</h3><p>One-stop solution for EV users.
+</p></div>
       <div class="why-box"><h3>Smart Booking</h3><p>Pre-book easily with our app.</p></div>
+      <div class="why-box"><h3>Trust </h3><p>Trust built via reviews, CCTV, verification.</p></div>
     </div>
   </section>
 
@@ -310,10 +329,10 @@ footer h4 { margin-bottom: 15px; color: #fdbb2d; }
   <section class="pricing" id="parking">
     <h2>Our Pricing Plans</h2>
     <div class="pricing-cards">
-      <div class="price-card"><h3>Basic</h3><p>₹50/hour</p><button>Learn More</button></div>
-      <div class="price-card"><h3>Standard</h3><p>₹200/day</p><button>Learn More</button></div>
-      <div class="price-card"><h3>Premium</h3><p>₹500/week</p><button>Learn More</button></div>
-      <div class="price-card"><h3>Economy</h3><p>₹150/day</p><button>Learn More</button></div>
+      <div class="price-card"><h3>Basic</h3><p>₹50/hour</p><button>Maximum</button></div>
+      <div class="price-card"><h3>Standard</h3><p>₹200/day</p><button>Maximum</button></div>
+      <div class="price-card"><h3>Premium</h3><p>₹500/week</p><button>Maximum</button></div>
+      <div class="price-card"><h3>Economy</h3><p>₹150/day</p><button>Maximum</button></div>
     </div>
   </section>
 
@@ -324,7 +343,7 @@ footer h4 { margin-bottom: 15px; color: #fdbb2d; }
   </section>
 
   <!-- Footer -->
-  <footer>
+   <footer>
     <div>
       <h4>Standway</h4>
       <p>Smart Parking Solution for Everyone.</p>
@@ -337,13 +356,13 @@ footer h4 { margin-bottom: 15px; color: #fdbb2d; }
     <div>
       <h4>Navigation</h4>
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#parking">Pricing</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
   </footer>
+
 
   <!-- Script -->
  <script>

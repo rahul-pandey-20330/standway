@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About Us - Standway</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f5f7fa;
+      color: #333;
+    }
+
+    /* Navbar */
+    header {
+      background: #111;
+      color: white;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    header .logo { font-size: 1.8rem; font-weight: bold; color: #fdbb2d; }
+    nav ul { list-style: none; display: flex; gap: 25px; }
+    nav ul li a { color: white; text-decoration: none; transition: 0.3s; }
+    nav ul li a:hover { color: #fdbb2d; }
+
+    /* Hero Section */
+    .hero {
+      background: url("https://images.unsplash.com/photo-1521791136064-7986c2920216") center/cover no-repeat;
+      height: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+    }
+    .hero .content {
+      position: relative;
+      z-index: 1;
+    }
+    .hero h1 { font-size: 3rem; margin-bottom: 10px; }
+    .hero p { font-size: 1.2rem; }
+
+    /* About Company Section */
+    .about-company {
+      text-align: center;
+      padding: 60px 20px;
+      background: #fff5e6;
+    }
+    .about-company h2 { font-size: 2.2rem; margin-bottom: 20px; }
+    .about-company p { max-width: 800px; margin: auto; font-size: 1.1rem; line-height: 1.6; color: #333; }
+
+    /* Team Section */
+    .team-section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .team-section h2 { font-size: 2.5rem; margin-bottom: 40px; color: #111; }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      justify-items: center;
+    }
+    .team-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      transition: transform 0.3s, box-shadow 0.3s;
+      width: 250px;
+      text-align: center;
+      padding: 20px;
+    }
+    .team-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+    }
+    .team-card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+      border: 4px solid #fdbb2d;
+    }
+    .team-card h3 { color: #fdbb2d; margin: 10px 0 5px; font-size: 1.2rem; }
+    .team-card span { display: block; font-size: 0.95rem; color: #555; margin-bottom: 10px; }
+    .team-card p { font-size: 0.9rem; color: #666; line-height: 1.4; }
+
+    /* Footer */
+    footer {
+      background: #111;
+      color: white;
+      padding: 40px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: space-between;
+    }
+    footer h4 { margin-bottom: 15px; color: #fdbb2d; }
+    footer ul { list-style: none; padding: 0; }
+    footer ul li a { color: white; text-decoration: none; transition: 0.3s; }
+    footer ul li a:hover { color: #fdbb2d; }
+
+    @media(max-width:768px) {
+      .hero h1 { font-size: 2rem; }
+      .team-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <div class="logo">Standway</div>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="content">
+      <h1>Meet the Standway Team</h1>
+      <p>Innovators driving smarter, stress-free parking solutions.</p>
+    </div>
+  </section>
+
+  <!-- About Company -->
+  <section class="about-company">
+    <h2>Our Mission & Vision</h2>
+    <p>
+      Standway is transforming urban parking through technology, sustainability, and convenience. Founded by passionate innovators, our goal is to make parking hassle-free and eco-friendly while supporting smart city initiatives.
+    </p>
+  </section>
+
+  <!-- Team Section -->
+  <section class="team-section">
+    <h2>Our Team</h2>
+    <div class="team-grid">
+      <!-- Founder -->
+      <div class="team-card">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Founder">
+        <h3>Rahul Pandey</h3>
+        <span>Founder & CEO</span>
+        <p>Visionary behind Standway, passionate about smart city solutions and innovation.</p>
+      </div>
+
+      <!-- Co-Founder -->
+      <div class="team-card">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Co-Founder">
+        <h3>Neha Sharma</h3>
+        <span>Co-Founder & COO</span>
+        <p>Operational expert ensuring seamless execution of Standway’s vision and strategy.</p>
+      </div>
+
+      <!-- CTO -->
+      <div class="team-card">
+        <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="CTO">
+        <h3>Amit Verma</h3>
+        <span>Chief Technology Officer</span>
+        <p>Tech lead driving innovation in smart parking technology and app development.</p>
+      </div>
+
+      <!-- Additional Member -->
+      <div class="team-card">
+        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Marketing Head">
+        <h3>Pooja Singh</h3>
+        <span>Marketing Head</span>
+        <p>Leading our branding, marketing campaigns and customer engagement strategies.</p>
+      </div>
+
+      <div class="team-card">
+        <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Design Lead">
+        <h3>Rohan Mehta</h3>
+        <span>Design Lead</span>
+        <p>Creative designer crafting user-friendly and visually appealing interfaces.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div>
+      <h4>Standway</h4>
+      <p>Smart Parking Solution for Everyone.</p>
+    </div>
+    <div>
+      <h4>Contact Info</h4>
+      <p>Email: support@standway.com</p>
+      <p>Phone: +91 9876543210</p>
+    </div>
+    <div>
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+</body>
+</html>

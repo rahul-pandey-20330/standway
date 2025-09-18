@@ -60,9 +60,14 @@ app.set("views", path.join(__dirname, "views"));
 // Static Files
 app.use(express.static(path.join(__dirname, "public")));
 
-// Router
+
+
+
+// Index router
 const indexRouter = require("./routes/index");
 app.use("/", indexRouter);
+
+
 
 // Start Server
 const PORT = process.env.PORT || 3000;
