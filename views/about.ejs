@@ -6,29 +6,71 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/style.css">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #f5f7fa;
-      color: #333;
-    }
+    /* RESET */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Arial, sans-serif; background: #f9f9f9; color: #333; }
 
-    /* Navbar */
-    header {
-      background: #111;
-      color: white;
-      padding: 15px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    header .logo { font-size: 1.8rem; font-weight: bold; color: #fdbb2d; }
-    nav ul { list-style: none; display: flex; gap: 25px; }
-    nav ul li a { color: white; text-decoration: none; transition: 0.3s; }
-    nav ul li a:hover { color: #fdbb2d; }
+/* Navbar */
+/* Hamburger Menu Button */
+.menu-btn {
+  display: none; /* hidden by default */
+  font-size: 2rem;
+  cursor: pointer;
+  color: white;
+}
+
+/* Mobile navbar hidden initially */
+#navbar ul {
+  display: flex;
+  gap: 25px;
+}
+
+@media (max-width: 768px) {
+  #navbar {
+    display: none; /* hidden initially on mobile */
+    width: 100%;
+    background: #111;
+    position: absolute;
+    top: 65px; /* below navbar */
+    left: 0;
+  }
+  #navbar ul {
+    flex-direction: column;
+    gap: 0;
+  }
+  #navbar ul li {
+    border-bottom: 1px solid #333;
+  }
+  #navbar ul li a {
+    padding: 12px 20px;
+    display: block;
+  }
+
+  .menu-btn {
+    display: block; /* show hamburger */
+  }
+
+  header {
+    position: relative;
+    flex-wrap: wrap;
+  }
+}
+
+/* Show menu when active */
+#navbar.active {
+  display: block;
+}
+
+header {
+  background: #111; color: white;
+  padding: 15px 40px;
+  display: flex; justify-content: space-between; align-items: center;
+  position: sticky; top: 0; z-index: 1000;
+}
+header .logo { font-size: 1.8rem; font-weight: bold; color: #fdbb2d; }
+nav ul { list-style: none; display: flex; gap: 25px; flex-wrap: wrap; }
+nav ul li a { color: white; text-decoration: none; transition: color 0.3s; }
+nav ul li a:hover { color: #fdbb2d; }
 
     /* Hero Section */
     .hero {
@@ -125,13 +167,19 @@
 <body>
 
   <!-- Navbar -->
-  <header>
+   <header>
     <div class="logo">Standway</div>
-    <nav>
+    <div class="menu-btn" id="menu-btn">&#9776;</div>
+
+    <nav id="navbar">
       <ul>
         <li><a href="/">Home</a></li>
-        <li><a href="/about">About Us</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="./about">About Us</a></li>
+        <li><a href="#parking">Parking</a></li>
+        <li><a href="#location">Location</a></li>
+        <li><a href="#">Login</a></li>
+        <li><a href="#">Signup</a></li>
       </ul>
     </nav>
   </header>
@@ -158,36 +206,66 @@
     <div class="team-grid">
       <!-- Founder -->
       <div class="team-card">
-        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Founder">
-        <h3>Rahul Pandey</h3>
+        <img src="/images/altmas profile.png" alt="Founder">
+        <h3>Altmas Hussain</h3>
         <span>Founder & CEO</span>
         <p>Visionary behind Standway, passionate about smart city solutions and innovation.</p>
       </div>
 
       <!-- Co-Founder -->
       <div class="team-card">
-        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Co-Founder">
-        <h3>Neha Sharma</h3>
-        <span>Co-Founder & COO</span>
-        <p>Operational expert ensuring seamless execution of Standway’s vision and strategy.</p>
+        <img src="/images/image_2025-09-18_230831595.png" alt="Co-Founder">
+        <h3>Dr. Vaishali Dhingrar</h3>
+        <span>Mentor & Co-Founde</span>
       </div>
 
       <!-- CTO -->
       <div class="team-card">
-        <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="CTO">
-        <h3>Amit Verma</h3>
-        <span>Chief Technology Officer</span>
-        <p>Tech lead driving innovation in smart parking technology and app development.</p>
+        <img src="/images/image_2025-09-18_231800703.png" alt="CTO">
+        <h3>Vipul Rajput</h3>
+        <span>Co-Founder &  COO</span>
       </div>
 
       <!-- Additional Member -->
       <div class="team-card">
-        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Marketing Head">
-        <h3>Pooja Singh</h3>
-        <span>Marketing Head</span>
-        <p>Leading our branding, marketing campaigns and customer engagement strategies.</p>
+        <img src="/images/image_2025-09-18_231850389.png" alt="Marketing Head">
+        <h3>Amit Yadav</h3>
+        <span>CTO</span>
+       
       </div>
 
+      <div class="team-card">
+        <img src="/images/image_2025-09-18_232000595.png" alt="Design Lead">
+        <h3>Akshay Kumar</h3>
+        <span>Chief Scientist & R&D officer</span>
+        <p>Creative designer crafting user-friendly and visually appealing interfaces.</p>
+      </div>
+
+
+      <div class="team-card">
+        <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Design Lead">
+        <h3>Rohan Mehta</h3>
+        <span>Design Lead</span>
+        <p>Creative designer crafting user-friendly and visually appealing interfaces.</p>
+      </div>
+      <div class="team-card">
+        <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Design Lead">
+        <h3>Rohan Mehta</h3>
+        <span>Design Lead</span>
+        <p>Creative designer crafting user-friendly and visually appealing interfaces.</p>
+      </div>
+      <div class="team-card">
+        <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Design Lead">
+        <h3>Rohan Mehta</h3>
+        <span>Design Lead</span>
+        <p>Creative designer crafting user-friendly and visually appealing interfaces.</p>
+      </div>
+      <div class="team-card">
+        <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Design Lead">
+        <h3>Rohan Mehta</h3>
+        <span>Design Lead</span>
+        <p>Creative designer crafting user-friendly and visually appealing interfaces.</p>
+      </div>
       <div class="team-card">
         <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Design Lead">
         <h3>Rohan Mehta</h3>
@@ -217,6 +295,26 @@
       </ul>
     </div>
   </footer>
+<script>document.addEventListener("DOMContentLoaded", () => {
+  console.log("Standway loaded ✅");
 
+  // Smooth scroll
+  document.querySelectorAll("a[href^='#']").forEach(anchor => {
+    anchor.addEventListener("click", function(e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute("href")).scrollIntoView({
+        behavior: "smooth"
+      });
+    });
+  });
+});
+// Hamburger Menu Toggle
+const menuBtn = document.getElementById("menu-btn");
+const navbar = document.getElementById("navbar");
+
+menuBtn.addEventListener("click", () => {
+  navbar.classList.toggle("active");
+});
+</script>
 </body>
 </html>
