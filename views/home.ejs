@@ -66,21 +66,25 @@ header {
   display: flex; justify-content: space-between; align-items: center;
   position: sticky; top: 0; z-index: 1000;
 }
-header .logo { font-size: 1.8rem; font-weight: bold; color: #fdbb2d; }
+header .logo { font-size: 1.8rem; font-weight: bold; color: #1951b9; }
 nav ul { list-style: none; display: flex; gap: 25px; flex-wrap: wrap; }
 nav ul li a { color: white; text-decoration: none; transition: color 0.3s; }
-nav ul li a:hover { color: #fdbb2d; }
+nav ul li a:hover { color: #3147a8; }
 
 /* Hero Section */
 
 .hero {
   position: relative;
   height: 60vh; /* Reduce height from 80vh to 60vh */
-  background: url("https://images.unsplash.com/photo-1525609004556-c46c7d6cf023") center/cover no-repeat;
+  background: url("/images/Illustration Hiking Website Email Header (2).png") center/cover no-repeat;
   display: flex;
   align-items: flex-end; /* Align content to bottom */
   justify-content: center;
   padding: 20px;
+  
+  background-size: cover;
+  object-fit: cover;
+  overflow: hidden;
 }
 
 .hero .content {
@@ -126,7 +130,7 @@ nav ul li a:hover { color: #fdbb2d; }
 }
 
 .form-inline button:hover {
-  background: #b21f1f;
+  background: #173d85;
   color: white;
 }
 
@@ -144,7 +148,7 @@ nav ul li a:hover { color: #fdbb2d; }
   text-align: center; text-decoration: none; color: #333; font-size: 1.2rem; font-weight: bold;
   box-shadow: 0 6px 20px rgba(0,0,0,0.1); transition: all 0.4s ease;
 }
-.features a:hover { background: linear-gradient(135deg,#fdbb2d,#ff512f); color: white; transform: translateY(-12px); }
+.features a:hover { background: linear-gradient(135deg,#566898,#0f2b9e); color: white; transform: translateY(-12px); }
 
 /* Why Choose */
 .why { padding: 60px 20px; background: #fff5e6; text-align: center; }
@@ -154,14 +158,14 @@ nav ul li a:hover { color: #fdbb2d; }
 .why-box:hover { transform: translateY(-8px) scale(1.03); }
 
 /* Testimonials */
-#testimonials { background: linear-gradient(135deg,#1a2a6c,#b21f1f,#fdbb2d); color: white; padding: 60px 20px; text-align: center; overflow: hidden; }
+#testimonials { background: linear-gradient(135deg,#1a2a6c,#155d6c,#052071); color: white; padding: 60px 20px; text-align: center; overflow: hidden; }
 #testimonials h2 { font-size: 2.5rem; margin-bottom: 40px; }
 .slider { overflow: hidden; width: 100%; }
 .slider-track { display: flex; animation: scroll 35s linear infinite; gap: 20px; }
 .card { min-width: 280px; background: rgba(255,255,255,0.15); border-radius: 15px; padding: 20px; backdrop-filter: blur(8px); text-align: center; }
 .card img { width: 80px; height: 80px; border-radius: 50%; border: 3px solid white; margin-bottom: 15px; }
-.card h3 { color: #ffeb3b; margin-bottom: 10px; }
-.card p { color: #f1f1f1; }
+.card h3 { color: #3ba0ff; margin-bottom: 10px; }
+.card p { color: #2b2a3a; }
 @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
 /* Pricing */
@@ -170,16 +174,16 @@ nav ul li a:hover { color: #fdbb2d; }
 .pricing-cards { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
 .price-card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); min-width: 220px; flex: 1; transition: 0.3s; }
 .price-card:hover { transform: translateY(-8px); }
-.price-card button { background: #fdbb2d; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+.price-card button { background: #78acda; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; }
 
 /* Pre Booking */
 .prebook { padding: 60px 20px; text-align: center; background: #fff5e6; }
 .prebook h2 { margin-bottom: 20px; }
-.prebook button { background: #b21f1f; color: white; padding: 12px 25px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
+.prebook button { background: #478199; color: white; padding: 12px 25px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
 
 /* Footer */
 footer { background: #111; color: white; padding: 40px 20px; display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; }
-footer h4 { margin-bottom: 15px; color: #fdbb2d; }
+footer h4 { margin-bottom: 15px; color: #5198be; }
 
 /* Animations */
 @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
@@ -204,10 +208,10 @@ footer {
       gap: 20px;
       justify-content: space-between;
     }
-    footer h4 { margin-bottom: 15px; color: #fdbb2d; }
+    footer h4 { margin-bottom: 15px; color: #5c79c0; }
     footer ul { list-style: none; padding: 0; }
     footer ul li a { color: white; text-decoration: none; transition: 0.3s; }
-    footer ul li a:hover { color: #fdbb2d; }
+    footer ul li a:hover { color: #709edd; }
 
     @media(max-width:768px) {
       .hero h1 { font-size: 2rem; }
